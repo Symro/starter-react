@@ -1,0 +1,114 @@
+/* PX/REM mixin
+  S'utilise comme ceci :
+  +rem(font-size, 16px)
+  +rem(letter-spacing, 4px)
+  Possibilité de rajouter !important
+  +rem(font-size, 16px, !important) */
+@function parseInt($n)
+  @return $n / ($n * 0 + 1)
+
+=rem($property, $values, $content: null)
+  $px : ()
+  $rem: ()
+
+  @each $value in $values
+    @if $value == 0 or $value == auto
+      $px : append($px , $value)
+      $rem: append($rem, $value)
+
+    @else
+      $unit: unit($value)
+      $val: parseInt($value)
+
+      @if $unit == "px"
+        $px : append($px,  $value)
+        $rem: append($rem, ($val / 10 + rem))
+
+      @if $unit == "rem"
+        $px : append($px,  ($val * 10 + px))
+        $rem: append($rem, $value)
+
+  @if $px == $rem
+    #{$property}: $px $content
+  @else
+    #{$property}: $px $content
+    #{$property}: $rem $content
+
+// Image cover
+// Penser à ce que le parent ait une position relative et un overflow hidden
+// S'utilise comme ceci : +img-cover
+=img-cover
+  bottom: -10000%
+  height: auto
+  left: -10000%
+  margin: auto
+  min-height: 1000%
+  min-width: 1000%
+  overflow: hidden
+  position: absolute
+  right: -10000%
+  top: -10000%
+  transform: scale(.1)
+  width: auto
+
+// Mixin pseudo-elements
+=pseudo($display: block, $pos: absolute, $content: '')
+  content: $content
+  display: $display
+  position: $pos
+
+// Mixin truncate
+=truncate($truncation-boundary)
+  max-width: $truncation-boundary
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+
+// Margins/paddings mixin
+$spaceamounts: (5, 10, 15, 20, 25, 30, 40, 50)
+
+=generate-margin-bottom
+  @each $space in $spaceamounts
+    .mb-#{$space}
+      margin-bottom: #{$space}px
+
+=generate-margin-right
+  @each $space in $spaceamounts
+    .mr-#{$space}
+      margin-right: #{$space}px
+
+=generate-margin-top
+  @each $space in $spaceamounts
+    .mt-#{$space}
+      margin-top: #{$space}px
+
+=generate-margin-left
+  @each $space in $spaceamounts
+    .ml-#{$space}
+      margin-left: #{$space}px
+
+=generate-padding-top
+  @each $space in $spaceamounts
+    .pt-#{$space}
+      padding-top: #{$space}px
+
+=generate-padding-bottom
+  @each $space in $spaceamounts
+    .pb-#{$space}
+      padding-bottom: #{$space}px
+
+=generate-padding-right
+  @each $space in $spaceamounts
+    .pr-#{$space}
+      padding-right: #{$space}px
+
+=generate-padding-left
+  @each $space in $spaceamounts
+    .pl-#{$space}
+      padding-left: #{$space}px
+
++generate-margin-bottom
++generate-margin-right
++generate-margin-top
++generate-padding-bottom
++generate-padding-top

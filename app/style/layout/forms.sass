@@ -1,0 +1,95 @@
+.form-default
+  input
+    +rem(line-height, 16px)
+    border: 1px solid $gray-base
+    color: $gray-base
+    margin-bottom: 20px
+    padding: 14px 24px
+
+  label,
+  span
+    color: $gray-base
+
+  button[type=submit]
+    @extend .btn-lg
+
+  label + input,
+  label + select
+    display: block
+
+  &.form-small
+    select,
+    input
+      +rem(font-size, 14px)
+
+    input
+      padding: 8px 14px
+
+.select-default
+  .select
+    display: inline-block
+    position: relative
+    z-index: 1
+
+    &:after
+      @extend .caret
+      bottom: 0
+      color: $gray-base
+      content: ''
+      margin: auto
+      position: absolute
+      right: 15px
+      top: 0
+      z-index: -1
+
+  select
+    appearance: none
+    background: none
+    border-bottom: 2px solid $gray-base
+    border-left: 0
+    border-radius: 0
+    border-right: 0
+    border-top: 0
+    color: black
+    padding: 8px 30px 8px 8px
+
+.checkbox-default
+  input[type=checkbox]
+    opacity: 0
+
+    & + label
+      +rem(font-size, 12px)
+      cursor: pointer
+      margin-right: 30px
+      min-width: initial
+      padding-left: 5px
+      padding-top: 2px
+      position: relative
+
+      &:before
+        border: 1px solid $brand-primary
+        bottom: 0
+        content: ''
+        height: 14px
+        left: -15px
+        margin: auto
+        position: absolute
+        top: 0
+        width: 14px
+
+      &:after
+        background-color: $brand-primary
+        content: ''
+        height: 1px
+        left: -14px
+        margin: auto
+        opacity: 0
+        position: absolute
+        top: 2px
+        transition: opacity .2s ease-out
+        width: 1px
+
+    &:checked
+      & + label:after
+        opacity: 1
+        content: '✓'

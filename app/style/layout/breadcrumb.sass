@@ -1,0 +1,16 @@
+.breadcrumb
+  li
+    +rem(font-size, 14px)
+
+  .active
+    color: $brand-secondary
+    font-family: $font-family-sans-serif-bold
+
+  & > li + li
+    @extend .icon-breadcrumb
+
+    &:before
+      +rem(font-size, 11px)
+      color: $gray-base
+      font-family: 'icomoon'
+      margin-right: 8px

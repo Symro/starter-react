@@ -1,0 +1,31 @@
+.panel-group
+  .panel-title
+    +rem(font-size, 14px)
+
+    a
+      background-color: $gray-base
+      color: white
+      display: block
+      padding: 15px
+      position: relative
+      text-transform: uppercase
+
+      &:hover,
+      &:focus
+        text-decoration: none
+
+      &:after
+        bottom: 0
+        content: '\e905'
+        font-family: 'icomoon'
+        height: 15px
+        margin: auto
+        position: absolute
+        right: 15px
+        top: 0
+        transform: rotate(90deg)
+        transition: transform .2s ease-out
+
+      &:not(.collapsed)
+        &:after
+          transform: rotate(-90deg)

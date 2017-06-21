@@ -1,0 +1,40 @@
+############################
+# OS X
+############################
+
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+.Spotlight-V100
+.Trashes
+._*
+
+############################
+# Logs / backups
+############################
+.tmp
+*.log
+.tmp
+*.log
+*.tar
+*.gz
+*.sql
+*.log
+*.tar.gz
+*.zip
+*.rar
+*.tgz
+
+############################
+# IDE
+############################
+.idea
+
+############################
+# Builds
+############################
+node_modules
+dist
+public
+app/assets/fonts/
