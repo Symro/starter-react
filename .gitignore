@@ -37,4 +37,4 @@ Icon
 node_modules
 dist
 public
-app/assets/fonts/
+app/assets/*
